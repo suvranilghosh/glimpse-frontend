@@ -3,6 +3,12 @@
 import { Button } from "@/components/ui/button";
 import { Trash2 } from "lucide-react";
 import axios from "axios";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "../ui/tooltip";
 
 const NEXT_PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -28,9 +34,22 @@ const DeleteAllLeadsButton = () => {
   };
 
   return (
-    <Button variant="destructive" className="gap-2" onClick={handleDelete}>
-      <Trash2 className="h-4 w-4" />
-    </Button>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="destructive"
+            className="gap-2"
+            onClick={handleDelete}
+          >
+            <Trash2 className="h-4 w-4" />
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p>Delete all leads</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 };
 
