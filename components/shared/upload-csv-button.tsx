@@ -5,12 +5,10 @@ import { Button } from "../ui/button";
 import { UploadIcon } from "lucide-react";
 import { parseCSV } from "@/lib/utils";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 
 const NEXT_PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const UploadCsvButton = () => {
-  const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => inputRef.current?.click();
@@ -27,8 +25,9 @@ const UploadCsvButton = () => {
       });
       console.log(res);
 
-      // Refresh page to populate table
-      router.refresh();
+      // Success alert and refresh page to populate table
+      window.alert("Upload successful!");
+      window.location.reload();
 
       //reset form input to allow another upload the
       e.target.value = "";

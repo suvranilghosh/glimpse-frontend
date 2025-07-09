@@ -16,6 +16,7 @@ import UploadCSVButton from "@/components/shared/upload-csv-button";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 import axios from "axios";
+import DeleteAllLeadsButton from "@/components/shared/delete-all-button";
 
 const NEXT_PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const Dashboard = () => {
@@ -131,7 +132,10 @@ const Dashboard = () => {
           {/* Title & Upload CSV */}
           <div className="flex justify-between items-center w-full">
             <h1 className="text-3xl font-bold mb-2">Leads</h1>
-            <UploadCSVButton />
+            <div className="flex flex-col gap-3 md:flex-row">
+              <UploadCSVButton />
+              <DeleteAllLeadsButton />
+            </div>
           </div>
 
           {/* Search Bar and Filters */}
