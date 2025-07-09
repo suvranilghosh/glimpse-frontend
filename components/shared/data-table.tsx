@@ -81,7 +81,7 @@ const DataTable = ({ leads }: DataTableProps) => {
             ))
           ) : (
             <TableRow>
-              <TableCell colSpan={7} className="text-center py-6 text-gray-400">
+              <TableCell colSpan={8} className="text-center py-6 text-gray-400">
                 No Leads found
               </TableCell>
             </TableRow>
