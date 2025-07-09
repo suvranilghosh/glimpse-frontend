@@ -5,10 +5,12 @@ import { Button } from "../ui/button";
 import { UploadIcon } from "lucide-react";
 import { parseCSV } from "@/lib/utils";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const NEXT_PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const UploadCsvButton = () => {
+  const router = useRouter();
   const inputRef = useRef<HTMLInputElement>(null);
 
   const handleClick = () => inputRef.current?.click();
@@ -25,7 +27,10 @@ const UploadCsvButton = () => {
       });
       console.log(res);
 
-      // Reset form input to allow another upload
+      // Refresh page to populate table
+      router.refresh();
+
+      //reset form input to allow another upload the
       e.target.value = "";
     } catch (err) {
       console.error("Error parsing CSV:", err);

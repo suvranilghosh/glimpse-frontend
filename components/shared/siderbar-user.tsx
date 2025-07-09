@@ -18,18 +18,22 @@ import {
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
+import { Skeleton } from "../ui/skeleton";
 
-const NavUser = ({
-  user,
-}: {
+type NavUserProps = {
   user: {
     name: string;
     email: string;
-    avatar: string;
-  };
-}) => {
+    avatar?: string; // make avatar optional
+  } | null;
+};
+
+const NavUser = ({ user }: NavUserProps) => {
   const { isMobile } = useSidebar();
   const router = useRouter();
+  if (!user) {
+    return <Skeleton className="h-12 w-12 rounded-full" />;
+  }
 
   return (
     <SidebarMenu>
