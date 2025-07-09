@@ -6,6 +6,7 @@ export type Lead = {
   interestLevel: string;
   status: string;
   assignedSalesPerson: string;
+  createdAt: string;
 };
 
 export type PaginatedResponse = {

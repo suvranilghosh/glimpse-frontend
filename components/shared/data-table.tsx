@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Badge } from "../ui/badge";
 import { Card } from "../ui/card";
 import {
@@ -9,11 +10,17 @@ import {
   TableRow,
 } from "../ui/table";
 import type { Lead } from "@/lib/types";
+import { ArrowDown, ArrowUp } from "lucide-react";
 
 type DataTableProps = {
   leads: Lead[];
 };
 const DataTable = ({ leads }: DataTableProps) => {
+  const [sortOrder, setSortOrder] = useState("desc");
+  const toggleSort = () => {
+    const newOrder = sortOrder === "asc" ? "desc" : "asc";
+    setSortOrder(newOrder);
+  };
   return (
     <Card className="pt-0 pb-0">
       <Table>
@@ -26,6 +33,19 @@ const DataTable = ({ leads }: DataTableProps) => {
             <TableHead className="border-l">Interest</TableHead>
             <TableHead className="border-l">Status</TableHead>
             <TableHead className="border-l">Salesperson</TableHead>
+            <TableHead
+              className="border-l cursor-pointer select-none"
+              onClick={toggleSort}
+            >
+              <div className="flex items-center gap-1">
+                Created At
+                {sortOrder === "asc" ? (
+                  <ArrowUp className="h-4 w-4" />
+                ) : (
+                  <ArrowDown className="h-4 w-4" />
+                )}
+              </div>
+            </TableHead>
           </TableRow>
         </TableHeader>
         <TableBody>
@@ -54,6 +74,9 @@ const DataTable = ({ leads }: DataTableProps) => {
                 </TableCell>
                 <TableCell>{lead.status}</TableCell>
                 <TableCell>{lead.assignedSalesPerson}</TableCell>
+                <TableCell className="text-center">
+                  {new Date(lead.createdAt).toLocaleDateString()}
+                </TableCell>
               </TableRow>
             ))
           ) : (

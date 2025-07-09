@@ -23,11 +23,6 @@ const Dashboard = () => {
 
   // State Variables
   const [authenticated, setAuthenticated] = useState<boolean | null>(null);
-  const [user, setUser] = useState<{
-    name: string;
-    email: string;
-    avatar?: string;
-  } | null>(null);
   const [leads, setLeads] = useState<Lead[]>([]);
   const [search, setSearch] = useState("");
   const [filters, setFilters] = useState({
@@ -41,6 +36,15 @@ const Dashboard = () => {
   // Pagination Limit
   // TODO: Input from user
   const pageSize = 20;
+
+  //TODO: Remove Dummy user
+  const data = {
+    user: {
+      name: "Neil Ghosh",
+      email: "linarvus@gmail.com",
+      avatar: "app\favicon.ico",
+    },
+  };
 
   // Validate token on client load
   useEffect(() => {
@@ -57,30 +61,10 @@ const Dashboard = () => {
   useEffect(() => {
     if (authenticated) {
       fetchLeads();
-      fetchUser();
     }
   }, [filters, search, page, authenticated]);
 
-  //Fetch user and leads
-  const fetchUser = async () => {
-    try {
-      const res = await axios.get(`${NEXT_PUBLIC_BASE_URL}/me`, {
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}`,
-        },
-      });
-
-      if (res.status === 200) {
-        setUser(res.data.user);
-      } else {
-        throw new Error("Unauthorized");
-      }
-    } catch (err) {
-      console.error("Failed to fetch user:", err);
-      setAuthenticated(false);
-      router.replace("/auth/sign-in");
-    }
-  };
+  //Fetch leads
 
   const fetchLeads = async () => {
     try {
@@ -117,7 +101,7 @@ const Dashboard = () => {
     }
   };
 
-  //  Return conditionally after all hooks
+  //  Prevent access to home page
   if (authenticated === false) {
     router.push("/auth/sign-in");
   }
@@ -136,7 +120,7 @@ const Dashboard = () => {
         <SidebarProvider>
           <Sidebar collapsible="icon">
             <SidebarHeader>
-              <NavUser user={user} />
+              <NavUser user={data.user} />
             </SidebarHeader>
           </Sidebar>
         </SidebarProvider>

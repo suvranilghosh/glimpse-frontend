@@ -20,15 +20,11 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import { Skeleton } from "../ui/skeleton";
 
-type NavUserProps = {
-  user: {
-    name: string;
-    email: string;
-    avatar?: string; // make avatar optional
-  } | null;
-};
-
-const NavUser = ({ user }: NavUserProps) => {
+const NavUser = ({
+  user,
+}: {
+  user: { name: string; email: string; avatar: string };
+}) => {
   const { isMobile } = useSidebar();
   const router = useRouter();
   if (!user) {
