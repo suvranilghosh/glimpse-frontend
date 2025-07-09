@@ -16,6 +16,7 @@ const UploadCsvButton = () => {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
+
     try {
       const leads: Lead[] = await parseCSV(file);
       console.log("Parsed leads:", leads);

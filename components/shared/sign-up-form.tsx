@@ -19,6 +19,7 @@ const NEXT_PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const SignUpForm = () => {
   const router = useRouter();
+
   const [visible, setVisible] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -157,7 +158,7 @@ const SignUpForm = () => {
               </div>
             </div>
             <div className="mt-4 text-center text-sm">
-              Already have an account?{" "}
+              {"Already have an account? "}
               <Link
                 href="../auth/sign-in"
                 className="underline underline-offset-4"

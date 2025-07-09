@@ -10,7 +10,7 @@ import {
   TableRow,
 } from "../ui/table";
 import type { Lead } from "@/lib/types";
-import { ArrowDown, ArrowUp } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 
 type DataTableProps = {
   leads: Lead[];
@@ -26,7 +26,7 @@ const DataTable = ({ leads }: DataTableProps) => {
       <Table>
         <TableHeader className="bg-muted sticky top-0 z-10">
           <TableRow>
-            <TableHead>Lead ID</TableHead>
+            <TableHead className="pl-5">Lead ID</TableHead>
             <TableHead className="border-l">Name</TableHead>
             <TableHead className="border-l">Email</TableHead>
             <TableHead className="border-l">Source</TableHead>
@@ -37,12 +37,12 @@ const DataTable = ({ leads }: DataTableProps) => {
               className="border-l cursor-pointer select-none"
               onClick={toggleSort}
             >
-              <div className="flex items-center gap-1">
+              <div className="flex justify-between items-center">
                 Created At
                 {sortOrder === "asc" ? (
-                  <ArrowUp className="h-4 w-4" />
+                  <ChevronUp className="h-4 w-4" />
                 ) : (
-                  <ArrowDown className="h-4 w-4" />
+                  <ChevronDown className="h-4 w-4" />
                 )}
               </div>
             </TableHead>
@@ -52,7 +52,7 @@ const DataTable = ({ leads }: DataTableProps) => {
           {leads.length > 0 ? (
             leads.map((lead) => (
               <TableRow key={lead.leadId}>
-                <TableCell>{lead.leadId}</TableCell>
+                <TableCell className="pl-5">{lead.leadId}</TableCell>
                 <TableCell>{lead.leadName}</TableCell>
                 <TableCell>{lead.contactInformation}</TableCell>
                 <TableCell>{lead.source}</TableCell>
@@ -74,8 +74,8 @@ const DataTable = ({ leads }: DataTableProps) => {
                 </TableCell>
                 <TableCell>{lead.status}</TableCell>
                 <TableCell>{lead.assignedSalesPerson}</TableCell>
-                <TableCell className="text-center">
-                  {new Date(lead.createdAt).toLocaleDateString()}
+                <TableCell>
+                  {new Date(lead.createdAt).toLocaleString()}
                 </TableCell>
               </TableRow>
             ))

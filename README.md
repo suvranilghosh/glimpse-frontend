@@ -5,6 +5,7 @@ Glimpse is a full-stack Lead Management System designed for sales teams to track
 ## Live Deployment
 
 Access the live app here: **[https://glimpse-frontend-git-main-neils-projects-2a8fd08d.vercel.app/](https://glimpse-frontend-git-main-neils-projects-2a8fd08d.vercel.app/)**
+![Dashboard Screenshot](./public/dashboard.png)
 
 ## Tech Stack
 
