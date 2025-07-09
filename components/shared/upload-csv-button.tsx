@@ -6,7 +6,7 @@ import { UploadIcon } from "lucide-react";
 import { parseCSV } from "@/lib/utils";
 import axios from "axios";
 
-const BASE_URL = "https://glimpse-backend-xc9m.onrender.com";
+const NEXT_PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const UploadCsvButton = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -20,7 +20,7 @@ const UploadCsvButton = () => {
       const leads: Lead[] = await parseCSV(file);
       console.log("Parsed leads:", leads);
 
-      const res = await axios.post(`${BASE_URL}/leads`, {
+      const res = await axios.post(`${NEXT_PUBLIC_BASE_URL}/leads`, {
         data: leads,
       });
       console.log(res);

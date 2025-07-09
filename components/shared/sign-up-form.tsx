@@ -15,7 +15,7 @@ import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import axios, { AxiosError } from "axios";
 
-const BASE_URL = "https://glimpse-backend-xc9m.onrender.com";
+const NEXT_PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 
 const SignUpForm = () => {
   const router = useRouter();
@@ -37,7 +37,7 @@ const SignUpForm = () => {
     }
 
     try {
-      const res = await axios.post(`${BASE_URL}/register`, {
+      const res = await axios.post(`${NEXT_PUBLIC_BASE_URL}/register`, {
         firstName,
         lastName,
         email,

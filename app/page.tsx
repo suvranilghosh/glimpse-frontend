@@ -34,8 +34,7 @@ import NavUser from "@/components/shared/siderbar-user";
 import { Skeleton } from "@/components/ui/skeleton";
 import axios from "axios";
 
-const BASE_URL = "https://glimpse-backend-xc9m.onrender.com";
-
+const NEXT_PUBLIC_BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
 const Dashboard = () => {
   const data = {
     user: {
@@ -89,7 +88,7 @@ const Dashboard = () => {
         limit: pageSize.toString(),
       });
 
-      const res = await axios.get(`${BASE_URL}/leads`, {
+      const res = await axios.get(`${NEXT_PUBLIC_BASE_URL}/leads`, {
         params,
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}`,
