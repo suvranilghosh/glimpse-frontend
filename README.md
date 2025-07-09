@@ -2,13 +2,9 @@
 
 Glimpse is a full-stack Lead Management System designed for sales teams to track, filter, and manage leads effectively. It features a clean UI with dynamic filtering, sorting, and secure authentication.
 
----
-
 ## Live Deployment
 
 Access the live app here: **[https://glimpse-frontend-git-main-neils-projects-2a8fd08d.vercel.app/](https://glimpse-frontend-git-main-neils-projects-2a8fd08d.vercel.app/)**
-
----
 
 ## Tech Stack
 
@@ -30,8 +26,6 @@ Access the live app here: **[https://glimpse-frontend-git-main-neils-projects-2a
 - Bcrypt – Password hashing
 - CORS – Cross-origin support
 
----
-
 ## Features
 
 - User registration and JWT-based login
@@ -43,8 +37,6 @@ Access the live app here: **[https://glimpse-frontend-git-main-neils-projects-2a
 - Visual interest indicators using badges
 - Responsive UI with mobile support
 - Full error handling and field validation
-
----
 
 ## Project Structure
 
@@ -59,5 +51,3 @@ glimpse/
 │ └── lib/ # Types, utils, API helpers
 └── README.md
 ```
-
----
