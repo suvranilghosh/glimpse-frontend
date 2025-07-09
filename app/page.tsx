@@ -169,7 +169,7 @@ const Dashboard = () => {
                     source: val === "All" ? "" : val,
                   }));
                 }}
-                value={filters.source || "All"}
+                value={filters.source || undefined}
               >
                 <SelectTrigger className="w-full md:w-40">
                   <SelectValue placeholder="Source" />
@@ -193,7 +193,7 @@ const Dashboard = () => {
                     interestLevel: val === "All" ? "" : val,
                   }));
                 }}
-                value={filters.interestLevel || "All"}
+                value={filters.interestLevel || undefined}
               >
                 <SelectTrigger className="w-full md:w-40">
                   <SelectValue placeholder="Interest Level" />
@@ -216,7 +216,7 @@ const Dashboard = () => {
                     status: val === "All" ? "" : val,
                   }));
                 }}
-                value={filters.status || "All"}
+                value={filters.status || undefined}
               >
                 <SelectTrigger className="w-full md:w-40">
                   <SelectValue placeholder="Status" />
