@@ -17,6 +17,8 @@ import { useRouter } from "next/navigation";
 import Cookies from "js-cookie";
 import axios from "axios";
 
+const BASE_URL = "https://glimpse-backend-xc9m.onrender.com";
+
 const SignInForm = () => {
   const router = useRouter();
   const [visible, setVisible] = useState(false);
@@ -29,7 +31,7 @@ const SignInForm = () => {
     setErrorMsg("");
 
     try {
-      const res = await axios.post("http://localhost:4000/login", {
+      const res = await axios.post(`${BASE_URL}/login`, {
         email,
         password,
       });

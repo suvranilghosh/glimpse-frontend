@@ -15,6 +15,8 @@ import { useRouter } from "next/navigation";
 import { Eye, EyeOff } from "lucide-react";
 import axios, { AxiosError } from "axios";
 
+const BASE_URL = "https://glimpse-backend-xc9m.onrender.com";
+
 const SignUpForm = () => {
   const router = useRouter();
   const [visible, setVisible] = useState(false);
@@ -35,7 +37,7 @@ const SignUpForm = () => {
     }
 
     try {
-      const res = await axios.post("http://localhost:4000/register", {
+      const res = await axios.post(`${BASE_URL}/register`, {
         firstName,
         lastName,
         email,

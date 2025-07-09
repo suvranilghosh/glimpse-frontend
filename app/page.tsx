@@ -34,7 +34,7 @@ import NavUser from "@/components/shared/siderbar-user";
 import { Skeleton } from "@/components/ui/skeleton";
 import axios from "axios";
 
-const BASE_URL = "http://localhost:4000";
+const BASE_URL = "https://glimpse-backend-xc9m.onrender.com";
 
 const Dashboard = () => {
   const data = {
